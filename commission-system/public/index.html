@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Program Commission</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main class="container">
+  <section class="card">
+    <h1>Program Commission</h1>
+    <p class="sub">ระบบคำนวณยอดขายและค่าคอมมิชชั่น</p>
+
+    <form id="commissionForm">
+      <div class="grid">
+        <label>ชื่อพนักงาน
+          <input id="name" required placeholder="เช่น อัครเดช">
+        </label>
+        <label>รหัสพนักงาน
+          <input id="employeeId" required placeholder="เช่น EMP001">
+        </label>
+        <label>Locks (1-70)
+          <input id="locks" type="number" min="1" max="70" required>
+        </label>
+        <label>Stocks (1-80)
+          <input id="stocks" type="number" min="1" max="80" required>
+        </label>
+        <label>Barrels (1-90)
+          <input id="barrels" type="number" min="1" max="90" required>
+        </label>
+      </div>
+      <div class="actions">
+        <button type="submit">คำนวณ</button>
+        <button type="reset" class="secondary">ล้างฟอร์ม</button>
+      </div>
+    </form>
+
+    <div id="message" class="message hidden"></div>
+
+    <section id="result" class="result hidden">
+      <h2>ผลลัพธ์</h2>
+      <div class="result-grid">
+        <div><span>ยอดขาย (Sales)</span><strong id="sales"></strong></div>
+        <div><span>ค่าคอมมิชชั่น</span><strong id="commission"></strong></div>
+        <div><span>รายได้รวม</span><strong id="income"></strong></div>
+      </div>
+      <p><b>รายได้รวมเป็นตัวอักษร:</b> <span id="incomeWords"></span></p>
+    </section>
+  </section>
+
+  <section class="card">
+    <div class="history-head">
+      <h2>ประวัติการคำนวณ</h2>
+      <div>
+        <select id="historyLimit">
+          <option value="5">ล่าสุด 5 รายการ</option>
+          <option value="10">ล่าสุด 10 รายการ</option>
+          <option value="20">ล่าสุด 20 รายการ</option>
+        </select>
+        <button id="clearHistory" class="danger">ลบทั้งหมด</button>
+        <button id="exportExcel" class="secondary">บันทึก .xlsx</button>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>ลำดับ</th><th>ชื่อ</th><th>รหัส</th><th>ว/ด/ป/เวลา</th><th>ยอดขาย</th><th>คอมมิชชั่น</th><th>รายได้</th><th>จัดการ</th></tr>
+        </thead>
+        <tbody id="historyBody"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+<script src="/app.js"></script>
+</body>
+</html>
